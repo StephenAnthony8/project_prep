@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 					c = va_arg(args, int);
 					_outp(&c, 1);
 					prints++;
-					format++;
+					format++; /* increment the string so that we move to the next character '%' */
 					break;
 				case '%':
 					c ='%';
@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 			_outp(&c, 1);
 			prints++;
 		}
-		format++;
+		format++; /* increment 2 ndo ipite the second character */
 	}
 	va_end(args);
 	return (prints);
