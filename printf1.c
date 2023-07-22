@@ -1,53 +1,61 @@
 #include <stdarg.h>
-#include <unistd.h>
-
-int _myprintf(const char *str)
-{
-	int len = 0;
-	
-	while (*str)
-	{
-		if (str
-		len = len + write(1, str, 1);
-		str++;
-	}		
-	return len;
-}
-
+#include "main.h"
+/**
+ * _printf - prints out the format and additional arguments
+ * @format: string to be printed out
+ * Return: length of string
+ */
 int _printf(const char *format, ...)
 {
 	char c;
-	int prints = 0;
+	int prints, len;
+	char *s;
 	va_list args;
+
+	prints = len = 0;
 	va_start(args, format);
 	
 	while (*format)
 	{
 		if (*format == '%')
 		{
-			format++;
 		
-			switch(*format)
+			switch(*(format + 1))
 			{
 				case 'c':
 					c = va_arg(args, int);
-					_myprintf(&c);
+					_outp(&c, 1);
 					prints++;
+					format++;
 					break;
 				case '%':
-					_myprintf("%");
+					c ='%';
+					_outp(&c, 1);
 					prints++;
+					format++;
 					break;
 				case 's':
-					_myprintf(va_arg(args, const char*));
-					prints++;
+					s = va_arg(args, char *);
+					len = _strlen(s);
+					_outp(s, len);
+					prints += len;
+					format++;
 					break;
 				default:
+					c = *format;
+					_outp(&c, 1);
+					prints++;
+					format++;
 					break;
 			}
 		}
-		prints = prints + _myprintf(format);
+		else 
+		{
+			c = *format;
+			_outp(&c, 1);
+		}
 		format++;
+		prints++;
 	}
 	va_end(args);
 	return (prints);
