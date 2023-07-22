@@ -42,11 +42,9 @@ int _printf(const char *format, ...)
 					format++;
 					break;
 				default:
-					c = *format;
-					_outp(&c, 1);
-					prints++;
-					format++;
-					break;
+					s = "unknown conversion type character";
+					_outp(s, 1);
+					return (0);
 			}
 		}
 		else 
