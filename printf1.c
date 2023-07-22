@@ -53,9 +53,9 @@ int _printf(const char *format, ...)
 		{
 			c = *format;
 			_outp(&c, 1);
+			prints++;
 		}
 		format++;
-		prints++;
 	}
 	va_end(args);
 	return (prints);
