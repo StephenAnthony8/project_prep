@@ -12,9 +12,9 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 	length = _count(format, args);
+	va_end(args);
 	if (length == -1)
 		return (0);
-	va_end(args);
 	va_start(args2, format);
 	_prstr(args2, format);
 	va_end(args2);

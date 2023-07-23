@@ -2,6 +2,7 @@
 /**
  * int_count - iterates through the values of the number
  * @m: input value
+ * Return: number of integers
  */
 int int_count(int m)
 {
@@ -37,8 +38,9 @@ int int_count(int m)
 	return (count);
 }
 /**
- * num_val - prints out numbers using _putchar()
+ * num_val - prints out numbers using _outp()
  * @n: input value
+ * Return: count value
  */
 
 int num_val(int n)

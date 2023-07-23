@@ -8,44 +8,40 @@
  */
 int _count(const char *format, va_list args)
 {
-	int prints, len, num;
-	char *s;
+	int prints, len, check;
+	char *s, newline = '\n';
 
-	prints = 0;
+	prints = check = 0;
 	while (*format)
 	{
 		if (*format == '%')
-			switch (*(format + 1))
+		{
+			format++;
+			switch (*(format))
 			{
 				case ('d'):case ('i'):
-					num = va_arg(args, int);
-					prints += num_val(num);
-					format++;
+					prints += num_val(va_arg(args, int));
 					break;
-				case 'c':
+				case 'c':case '%':
 					prints++;
-					format++; /* increments string to '%' */
-					break;
-				case '%':
-					prints++;
-					format++;
 					break;
 				case 's':
-					s = va_arg(args, char *);
-					len = _strlen(s);
-					prints += len;
-					format++;
+					prints += _strlen(va_arg(args, char *));
 					break;
 				default:
-					va_end(args);
-					s = "unknown conversion type character\n";
+					s = "unknown conversion type character ";
 					len = _strlen(s);
 					_outp(s, len);
-					return (-1);
+					_outp((char *) format, 1);
+					_outp(&newline, 1);
+					check = -1;
 			}
+		}
 		else
 			prints++;
 		format++; /* increment 2 ndo ipite the second character */
 	}
+	if (check != 0)
+		return (check);
 	return (prints);
 }

@@ -38,7 +38,7 @@ void prt_int(int m)
 	}
 }
 /**
- * num_prt - prints out numbers using _putchar()
+ * num_prt - prints out numbers using _atoi
  * @n: input value
  */
 
