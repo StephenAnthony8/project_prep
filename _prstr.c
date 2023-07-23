@@ -3,6 +3,7 @@
 /**
  * _prstr - prints out the format and additional arguments
  * @format: string to be printed out
+ * @args: arguments from main.c
  * Return: length of string
  */
 void _prstr(va_list args, const char *format)
