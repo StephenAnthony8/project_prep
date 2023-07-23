@@ -3,6 +3,7 @@
 /**
  * _count - prints out the format and additional arguments
  * @format: string to be printed out
+ * @args: arguments from main.c
  * Return: length of string
  */
 int _count(const char *format, va_list args)
@@ -14,11 +15,11 @@ int _count(const char *format, va_list args)
 	while (*format)
 	{
 		if (*format == '%')
-			switch(*(format + 1))
+			switch (*(format + 1))
 			{
 				case 'c':
 					prints++;
-					format++; /* increment the string so that we move to the next character '%' */
+					format++; /* increments string to '%' */
 					break;
 				case '%':
 					prints++;
@@ -37,7 +38,7 @@ int _count(const char *format, va_list args)
 					_outp(s, len);
 					return (-1);
 			}
-		else 
+		else
 			prints++;
 		format++; /* increment 2 ndo ipite the second character */
 	}

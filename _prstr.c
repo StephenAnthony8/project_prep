@@ -10,20 +10,20 @@ void _prstr(va_list args, const char *format)
 	char c;
 	int len;
 	char *s;
+
 	len = 0;
-	
 	while (*format)
 	{
 		if (*format == '%')
-			switch(*(format + 1))
+			switch (*(format + 1))
 			{
 				case 'c':
 					c = va_arg(args, int);
 					_outp(&c, 1);
-					format++; /* increment the string so that we move to the next character '%' */
+					format++; /* increments string to '%' */
 					break;
 				case '%':
-					c ='%';
+					c = '%';
 					_outp(&c, 1);
 					format++;
 					break;
@@ -34,7 +34,7 @@ void _prstr(va_list args, const char *format)
 					format++;
 					break;
 			}
-		else 
+		else
 		{
 			c = *format;
 			_outp(&c, 1);
