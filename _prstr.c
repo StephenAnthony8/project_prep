@@ -9,7 +9,7 @@
 void _prstr(va_list args, const char *format)
 {
 	char c;
-	int len;
+	int len, num;
 	char *s;
 
 	len = 0;
@@ -18,6 +18,11 @@ void _prstr(va_list args, const char *format)
 		if (*format == '%')
 			switch (*(format + 1))
 			{
+				case 'd':case 'i':
+					num = va_arg(args, int);
+					num_prt(num);
+					format++;
+					break;
 				case 'c':
 					c = va_arg(args, int);
 					_outp(&c, 1);

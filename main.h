@@ -20,4 +20,15 @@ int _count(const char *format, va_list args);
 void _prstr(va_list args, const char *format); 
 /* prints out the string if count is successful */
 
+/** int handling 
+ * Current values are base 10 but we will fix them in advanced
+ */
+/* number count */
+int num_val(int n); /* checks number position on numberline */
+int int_count(int m); /* calculates int values & passes to num_val */
+
+/* number printing */
+void num_prt(int n); /* checks number position on numberline */
+void prt_int(int m);/* prints int values */
+
 #endif /* MAIN_H */

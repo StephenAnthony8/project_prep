@@ -8,15 +8,20 @@
  */
 int _count(const char *format, va_list args)
 {
-	int prints, len;
+	int prints, len, num;
 	char *s;
 
-	prints = len = 0;
+	prints = 0;
 	while (*format)
 	{
 		if (*format == '%')
 			switch (*(format + 1))
 			{
+				case ('d'):case ('i'):
+					num = va_arg(args, int);
+					prints += num_val(num);
+					format++;
+					break;
 				case 'c':
 					prints++;
 					format++; /* increments string to '%' */

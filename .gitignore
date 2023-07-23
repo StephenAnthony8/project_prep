@@ -20,3 +20,5 @@ alias_comm*
 
 #ignore blueprint file
 blueprint
+
+#ignore main files
