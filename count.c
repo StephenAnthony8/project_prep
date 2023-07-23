@@ -9,7 +9,7 @@
 int _count(const char *format, va_list args)
 {
 	int prints, len, check;
-	char *s, newline = '\n';
+	char *s, *newline = "'\n";
 
 	prints = check = 0;
 	while (*format)
@@ -29,11 +29,11 @@ int _count(const char *format, va_list args)
 					prints += _strlen(va_arg(args, char *));
 					break;
 				default:
-					s = "unknown conversion type character ";
+					s = "unknown conversion type character '";
 					len = _strlen(s);
 					_outp(s, len);
 					_outp((char *) format, 1);
-					_outp(&newline, 1);
+					_outp(newline, 2);
 					check = -1;
 			}
 		}
